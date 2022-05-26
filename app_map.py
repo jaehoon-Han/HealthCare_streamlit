@@ -9,3 +9,4 @@ def run_map() :
 
 
     st.map(df)  
+    st.snow()
