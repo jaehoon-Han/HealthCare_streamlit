@@ -15,6 +15,8 @@ def run_bmi() :
 
    
     if  st.button('BMI 측정하기') :
-        BMI = round((weight**2)/height,1)
+        BMI = round((weight)/(height/100)**2,1)
+        if BMI > 25 :
+            st.text('비만입니다.')
         st.text(BMI)
    
