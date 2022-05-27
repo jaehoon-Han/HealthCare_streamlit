@@ -42,6 +42,7 @@ def run_bmi() :
             st.text('고강도 운동')
         else :
             st.text('놀아라')
+
         if age >= 65 :
             st.image('https://cdn.pixabay.com/photo/2018/07/22/05/16/person-3553814__340.jpg')
         elif age >= 18 :
