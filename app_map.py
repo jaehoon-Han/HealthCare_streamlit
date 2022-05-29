@@ -3,11 +3,14 @@ import pandas as pd
 import numpy as np
 import googlemaps
 def run_map() :
-    df = pd.DataFrame(
-        np.random.randn(1000,2) / [50, 50] + [37.76, -122.4],
-        columns = ['lat', 'lon'])
+    df = pd.read_csv('data/exercise_dataset.csv')
+    
+    df.columns= ['운동종목', '60kg 이하', '60~70kg', '70~80kg','80kg 이상','시간당 칼로리 소모량' ]
 
-    gmaps_key = 'AIzaSyAC9bK-fOBY_JcKs9uhH4hiCiIv0O9aEJY'
-    gmaps = googlemaps.Client(key=gmaps_key)
-    gg = gmaps.geocode('헬스장', language='ko')
-    st.dataframe(gg)    
+    st.dataframe(df)
+
+    
+    excer_inter = st.text_input('관심있는 종목을 입력하세요')
+    if excer_inter is not None :
+            st.markdown('https://www.youtube.com/results?search_query={}'.format(excer_inter.replace(' ','+')))
+    
