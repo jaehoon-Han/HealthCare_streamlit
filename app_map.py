@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import googlemaps
+
 def run_map() :
     df = pd.read_csv('data/exercise_dataset.csv')
     
@@ -13,4 +13,3 @@ def run_map() :
     excer_inter = st.text_input('관심있는 종목을 입력하세요')
     if excer_inter is not None :
             st.markdown('https://www.youtube.com/results?search_query={}'.format(excer_inter.replace(' ','+')))
-    
