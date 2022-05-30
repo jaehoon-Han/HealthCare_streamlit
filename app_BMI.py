@@ -63,6 +63,8 @@ def run_bmi() :
     
     df.columns= ['운동종목', '60kg 이하', '60~70kg', '70~80kg','80kg 이상','시간당 칼로리 소모량' ]
 
+
+
     st.dataframe(df)
 
     
