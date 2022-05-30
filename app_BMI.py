@@ -6,7 +6,7 @@ import streamlit as st
 
 
 def run_bmi() :
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
 
     with col1 :
         gender = st.radio('성별을 선택하세요.', ['남자','여자'])
@@ -39,25 +39,33 @@ def run_bmi() :
             st.text(BMI)
 
             if age >= 60 :
-                st.text('간단한 운동')
+                st.text('산책 및 스트레칭')
             elif age >= 40 : 
-                st.text('배드민턴')
-            elif age >= 15 :
+                st.text('간단한 운동')
+            elif age >= 20 :
                 st.text('고강도 운동')
             else :
-                st.text('놀아라')
+                st.text('반복적인 활동')
    
             if age >= 65 :
                 st.image('https://cdn.pixabay.com/photo/2018/07/22/05/16/person-3553814__340.jpg')
+            elif age >= 40 :
+                st.image('https://media.yourtrustrochdale.co.uk/wp-content/uploads/2020/09/15144104/iStock-1192307192-scaled-523x310.jpg')
             elif age >= 18 :
                 st.image('https://cdn.pixabay.com/photo/2018/04/05/17/21/kettlebell-3293478__340.jpg')
             else :
                 st.image('https://cdn.pixabay.com/photo/2015/01/26/22/40/child-613199__340.jpg')
-    with col3 :
-        if age >= 60 :
-            st.text('''60세 이상 노인은 여가시간과 이동시간을 활용한 운동이나 집안일, 스포츠 등을 매일 하는것이 좋습니다.
-            운동을 통해 심폐능력, 근육, 뼈 등의 건강기능을 강화시킬 수 있으며
-            비 전염성질병, 우울증, 인지력 하락도 방지됩니다.
-            일주일에 적어도 150분 중간 강도의, 또는 75분 가량의 격렬한 강도의 유산소운동을 합니다.''')
-    st.image('data/BMI_chart.jpg')
    
+    st.image('data/BMI_chart.jpg')
+
+ 
+    df = pd.read_csv('data/exercise_dataset.csv')
+    
+    df.columns= ['운동종목', '60kg 이하', '60~70kg', '70~80kg','80kg 이상','시간당 칼로리 소모량' ]
+
+    st.dataframe(df)
+
+    
+    excer_inter = st.text_input('관심있는 종목을 입력하세요')
+    if excer_inter is not None :
+            st.markdown('https://www.youtube.com/results?search_query={}'.format(excer_inter.replace(' ','+')))

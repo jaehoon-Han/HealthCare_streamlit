@@ -14,7 +14,7 @@ def main():
     choice = st.sidebar.selectbox('메뉴 선택', menu)
 
     if choice == menu[0] :
-        st.balloons()
+        pass
     elif choice == menu[1] :
         run_bmi()
     elif choice == menu[2] :
