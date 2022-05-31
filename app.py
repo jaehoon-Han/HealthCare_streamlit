@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 
 from app_BMI import run_bmi
 from app_map import run_map
+from app_workout import run_workout
 
 def main():
 
@@ -20,7 +21,7 @@ def main():
     elif choice == menu[2] :
         run_map()
     elif choice == menu[3] :
-        pass
+        run_workout()
 
 
 
