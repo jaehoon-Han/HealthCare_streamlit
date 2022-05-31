@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from app_BMI import run_bmi
 from app_map import run_map
 from app_workout import run_workout
-st.set_page_config(layout="wide")
+
 
 def main():
 
