@@ -74,39 +74,41 @@ def main():
     df.columns= ['운동종목', '60kg 이하', '60~70kg', '70~80kg','80kg 이상','시간당 칼로리 소모량' ]
 
 
+
+
+ 
+    if weight >= 80 :
+        st.dataframe(df[['운동종목','80kg 이상','시간당 칼로리 소모량']])
+    elif weight >= 70 :
+            st.dataframe(df[['운동종목','70~80kg','시간당 칼로리 소모량']])
+    elif weight >= 60 :
+            st.dataframe(df[['운동종목','60~70kg','시간당 칼로리 소모량']])
+    elif weight < 60 : 
+        st.dataframe(df[['운동종목','60kg 이하','시간당 칼로리 소모량']])
+
+
     col3, col4 = st.columns(2)
 
-    with col3 :
-        if weight >= 80 :
-            st.dataframe(df[['운동종목','80kg 이상','시간당 칼로리 소모량']])
-        elif weight >= 70 :
-             st.dataframe(df[['운동종목','70~80kg','시간당 칼로리 소모량']])
-        elif weight >= 60 :
-             st.dataframe(df[['운동종목','60~70kg','시간당 칼로리 소모량']])
-        elif weight < 60 : 
-             st.dataframe(df[['운동종목','60kg 이하','시간당 칼로리 소모량']])
 
-    with col4 :
+
+    with col3 :
             excer_inter = st.text_input('관심있는 운동을 입력하세요')
             if excer_inter is not None :
                 st.markdown('https://www.youtube.com/results?search_query={}'.format(excer_inter.replace(' ','+')))
-
-
-   
     
+    with col4 :
+        options = st.selectbox('운동 부위',['가슴','등','복근','팔','하체'])
+        if options == '가슴' :
+            st.image('data/part_workout_jpg/Chest.jpg')
+        elif options == '등' :
+            st.image('data/part_workout_jpg/Back.jpg')
+        elif options == '복근' :
+            st.image('data/part_workout_jpg/Abdominal.jpg')
+        elif options == '팔' :
+            st.image('data/part_workout_jpg/Triceps.jpg')
+        elif options == '하체' :
+            st.image('data/part_workout_jpg/Leg.jpg')
     
-    options = st.selectbox('운동 부위',['가슴','등','복근','팔','하체'])
-    if options == '가슴' :
-        st.image('data/part_workout_jpg/Chest.jpg')
-    elif options == '등' :
-        st.image('data/part_workout_jpg/Back.jpg')
-    elif options == '복근' :
-        st.image('data/part_workout_jpg/Abdominal.jpg')
-    elif options == '팔' :
-        st.image('data/part_workout_jpg/Triceps.jpg')
-    elif options == '하체' :
-        st.image('data/part_workout_jpg/Leg.jpg')
-  
     
     
 
