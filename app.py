@@ -2,28 +2,25 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-
 from app_BMI import run_bmi
 from app_map import run_map
 from app_workout import run_workout
 
+## URL 사용하여 이미지 띄우는 라이브러리
+import requests
+from io import BytesIO
+from PIL import Image
+
+
 
 def main():
+ 
 
     st.title('체력 자가진단 및 운동 추천 시스템')
     menu = ['Home', 'BMI', 'Recommend', "Today's Workout"]
-    
-    choice = st.sidebar.selectbox('메뉴 선택', menu)
+    ##
 
-    if choice == menu[0] :
-        pass
-    elif choice == menu[1] :
-        run_bmi()
-    elif choice == menu[2] :
-        run_map()
-    elif choice == menu[3] :
-        run_workout()
-
+ 
     col1, col2 = st.columns(2)
 
     with col1 :
@@ -92,46 +89,23 @@ def main():
                 st.markdown('https://www.youtube.com/results?search_query={}'.format(excer_inter.replace(' ','+')))
 
 
-    ## app_map 부분
+   
     
-    ## app.workout 부분
-    options = st.selectbox('운동 부위',['가슴','어깨','등','복근','팔','하체','엉덩이','전신','유산소'])
-    if options == '가슴' :
-        st.image('data/part_color/chest.png')
-    elif options == '어깨' :
-        st.image('data/part_color/shoulder.png')
-    elif options == '등' :
-        pass
-    elif options == '복근' :
-        pass
-    elif options == '팔' :
-        pass
-    elif options == '하체' :
-        pass
-    elif options == '엉덩이' :
-        pass
-    elif options == '전신' :
-        pass
     
-    st.write('운동 부위', options)
+    options = st.selectbox('운동 부위',['가슴','등','복근','팔','하체'])
     if options == '가슴' :
-        st.image('https://cdn.pixabay.com/photo/2015/01/26/22/40/child-613199__340.jpg')
-    elif options == '어깨' :
-        pass
+        st.image('data/part_workout_jpg/Chest.jpg')
     elif options == '등' :
-        pass
+        st.image('data/part_workout_jpg/Back.jpg')
     elif options == '복근' :
-        pass
+        st.image('data/part_workout_jpg/Abdominal.jpg')
     elif options == '팔' :
-        pass
+        st.image('data/part_workout_jpg/Triceps.jpg')
     elif options == '하체' :
-        pass
-    elif options == '엉덩이' :
-        pass
-    elif options == '전신' :
-        pass
-
-
+        st.image('data/part_workout_jpg/Leg.jpg')
+  
+    
+    
 
 
 
