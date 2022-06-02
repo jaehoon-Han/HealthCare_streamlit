@@ -2,14 +2,9 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from app_BMI import run_bmi
-from app_map import run_map
-from app_workout import run_workout
 
-## URL 사용하여 이미지 띄우는 라이브러리
-import requests
-from io import BytesIO
-from PIL import Image
+
+
 
 
 
@@ -80,11 +75,19 @@ def main():
 
 
     col3, col4 = st.columns(2)
+
     with col3 :
-        st.dataframe(df)
+        if weight >= 80 :
+            st.dataframe(df[['운동종목','80kg 이상','시간당 칼로리 소모량']])
+        elif weight >= 70 :
+             st.dataframe(df[['운동종목','70~80kg','시간당 칼로리 소모량']])
+        elif weight >= 60 :
+             st.dataframe(df[['운동종목','60~70kg','시간당 칼로리 소모량']])
+        elif weight < 60 : 
+             st.dataframe(df[['운동종목','60kg 이하','시간당 칼로리 소모량']])
 
     with col4 :
-            excer_inter = st.text_input('관심있는 종목을 입력하세요')
+            excer_inter = st.text_input('관심있는 운동을 입력하세요')
             if excer_inter is not None :
                 st.markdown('https://www.youtube.com/results?search_query={}'.format(excer_inter.replace(' ','+')))
 
